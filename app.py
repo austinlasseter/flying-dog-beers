@@ -28,6 +28,8 @@ beer_fig = go.Figure(data=beer_data, layout=beer_layout)
 ########### Display the chart
 
 app = dash.Dash()
+server = app.server
+
 app.layout = html.Div(children=[
     html.H1('Flying Dog Brewery'),
     dcc.Graph(
