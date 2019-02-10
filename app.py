@@ -4,6 +4,7 @@ import dash_html_components as html
 import plotly.graph_objs as go
 
 ########### Set up the chart
+
 bitterness = go.Bar(
     x=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA'],
     y=[35, 60, 85, 85],
