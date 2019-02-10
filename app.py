@@ -6,14 +6,14 @@ import plotly.graph_objs as go
 ########### Set up the chart
 
 bitterness = go.Bar(
-    x=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA'],
-    y=[35, 60, 85, 85],
+    x=['Blood Orange Ale', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA'],
+    y=[40, 60, 85, 85],
     name='IBU',
-    marker={'color':'lightblue'}
+    marker={'color':'darkgreen'}
 )
 alcohol = go.Bar(
     x=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter','Double Dog IPA'],
-    y=[5.4, 7.1, 9.2, 11.5],
+    y=[7.0, 7.1, 9.2, 11.5],
     name='ABV',
     marker={'color':'blue'}
 )
