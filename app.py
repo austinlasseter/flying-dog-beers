@@ -10,7 +10,7 @@ bitterness = go.Bar(
     x=beers,
     y=[35, 60, 85, 85],
     name='IBU',
-    marker={'color':'darkgreen'}
+    marker={'color':'lightblue'}
 )
 alcohol = go.Bar(
     x=beers,
