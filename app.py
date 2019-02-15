@@ -10,13 +10,13 @@ bitterness = go.Bar(
     x=beers,
     y=[35, 60, 85, 75],
     name='IBU',
-    marker={'color':'lightgreen'}
+    marker={'color':'green'}
 )
 alcohol = go.Bar(
     x=beers,
     y=[5.4, 7.1, 9.2, 4.3],
     name='ABV',
-    marker={'color':'pink'}
+    marker={'color':'blue'}
 )
 
 beer_data = [bitterness, alcohol]
@@ -33,7 +33,7 @@ app = dash.Dash()
 server = app.server
 
 app.layout = html.Div(children=[
-    html.H1('something completely different'),
+    html.H1('Flying Dog Beers'),
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
