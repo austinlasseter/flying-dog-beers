@@ -43,6 +43,7 @@ app.layout = html.Div(children=[
         figure=beer_fig
     ),
     html.A('Code on Github', href='https://github.com/austinlasseter/flying-dog-beers'),
+    html.Br(),
     html.A('Data Source', href='https://www.flyingdog.com/beers/'),
     ]
 )
