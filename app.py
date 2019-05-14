@@ -5,18 +5,22 @@ import plotly.graph_objs as go
 
 ########### Set up the chart
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
+ibu_values=[35, 60, 85, 75]
+abv_values=[5.4, 7.1, 9.2, 4.3]
+color1='lightblue'
+color2='darkgreen'
 
 bitterness = go.Bar(
     x=beers,
-    y=[35, 60, 85, 75],
+    y=ibu_values,
     name='IBU',
-    marker={'color':'red'}
+    marker={'color':color1}
 )
 alcohol = go.Bar(
     x=beers,
-    y=[5.4, 7.1, 9.2, 4.3],
+    y=abv_values,
     name='ABV',
-    marker={'color':'blue'}
+    marker={'color':color2}
 )
 
 beer_data = [bitterness, alcohol]
@@ -37,7 +41,10 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='flyingdog',
         figure=beer_fig
-    )]
+    ),
+    html.A('Code on Github', href='https://github.com/austinlasseter/flying-dog-beers'),
+    html.A('Data Source', href='https://www.flyingdog.com/beers/'),
+    ]
 )
 
 if __name__ == '__main__':
