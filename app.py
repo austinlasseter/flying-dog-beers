@@ -2,8 +2,11 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+import pandas as pd
 
 ########### Define your variables
+url = r'https://github.com/taiduchuynh16/flying-dog-beers/blob/master/samsung.csv'
+df = pd.read_csv(url)
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
 ibu_values=[35, 60, 85, 75]
 abv_values=[5.4, 7.1, 9.2, 4.3]
