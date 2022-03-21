@@ -32,26 +32,17 @@ app.layout = html.Div([
 
 def display_animated_graph(dropdown):
     animations = {
-<<<<<<< HEAD
         "price":
-               px.bar(price,
-=======
-        'Price':
              px.bar(price,
->>>>>>> parent of 2230fc3 (Update app.py)
                x="Ancestry",
                y='Mean',
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
                barmode='group'),
-<<<<<<< HEAD
-         "number":
-               px.bar(number,
-=======
+
           'Number':
              px.bar(number,
->>>>>>> parent of 2230fc3 (Update app.py)
                x="Ancestry",
                y='Mean',
                color="Donor Category",
