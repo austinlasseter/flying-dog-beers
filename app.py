@@ -1,6 +1,14 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Input, Output
 import plotly.express as px
 import pandas as pd
+
+#import dash
+#import dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+import plotly.graph_objs as 
+
+
 
 data = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
 app = Dash(__name__)
