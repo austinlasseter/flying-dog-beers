@@ -31,11 +31,11 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output("graph", "figure"), Input("selection", "value"))
+@app.callback(Output("graph", "figure"), Input("dropdown", "value"))
 
 def display_animated_graph(dropdown):
     animations = {
-        "Price":
+        "price":
                px.bar(price,
                x="Ancestry",
                y='Mean',
@@ -43,7 +43,7 @@ def display_animated_graph(dropdown):
                animation_frame="Date",
                animation_group="Ancestry",
                barmode='group'),
-         "Number":
+         "number":
                px.bar(number,
                x="Ancestry",
                y='Mean',
