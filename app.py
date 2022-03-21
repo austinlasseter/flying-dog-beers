@@ -24,7 +24,7 @@ app.layout = html.Div([
     dcc.RadioItems(
         id='selection',
         options=["Price","Number"],
-        value='Price',
+        value='Price', inline=True
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
 ])
