@@ -16,7 +16,7 @@ app = dash.Dash(__name__)
 server = app.server
 selection = 'Population - Bar'
 app.layout = html.Div([
-    html.H4('Animated Mean IUI Price by Donor Category and Ancestry'),
+    html.H4('Mean IUI Price by Donor Category and Ancestry Animated over Date'),
     html.P("Select an animation:"),
     dcc.RadioItems(
         id='selection',
