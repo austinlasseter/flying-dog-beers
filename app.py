@@ -1,63 +1,42 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly.graph_objs as go
+from dash import Dash, dcc, html, Input, Output
+import plotly.express as px
 
-########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-color1='darkred'
-color2='orange'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
-label1='IBU'
-label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
+app = Dash(__name__)
 
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
-)
-
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
-
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
-
-
-########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-server = app.server
-app.title=tabtitle
-
-########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
+app.layout = html.Div([
+    html.H4('Animated Mean IUI Price by Donor Category and Ancestry'),
+    html.P("Select an animation:"),
+    dcc.RadioItems(
+        id='selection',
+        options=["Population - Bar"],
+        value='Population - Bar',
     ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
-    ]
-)
+    dcc.Loading(dcc.Graph(id="graph"), type="cube")
+])
+
+
+@app.callback(Output("graph", "figure"), Input("selection", "value"))
+def display_animated_graph(selection):
+    df2  # replace with your own data source
+    animations = {
+        # 'GDP - Scatter': px.scatter(
+        #     df, x="gdpPercap", y="lifeExp", animation_frame="year",
+        #     animation_group="country", size="pop", color="continent",
+        #     hover_name="country", log_x=True, size_max=55,
+        #     range_x=[100,100000], range_y=[25,90]),
+        'Population - Bar':
+        px.bar(df2,
+               x="Ancestry",
+               y='Mean',
+               color="Donor Category",
+               animation_frame="Date",
+               animation_group="Ancestry",
+               barmode='group'),
+    }
+    return animations[selection]
+
+
+
 
 if __name__ == '__main__':
     app.run_server()
