@@ -1,12 +1,9 @@
 #from dash import Input, Output
-pip freeze > requirements.txt
-
 import plotly.express as px
 import pandas as pd
 
 import dash
-from dash.dependencies import Input 
-from dash.dependencies import Output
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
