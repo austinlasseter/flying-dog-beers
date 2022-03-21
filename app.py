@@ -20,7 +20,7 @@ server = app.server
 #selection = 'Population - Bar'
 app.layout = html.Div([
     html.H4('Mean IUI Data by Donor Category and Ancestry Animated over Date'),
-    html.P("Select an animation:"),
+    html.P("Select a Variable:"),
     dcc.RadioItems(
         id="selection",
         options=["Price","Number"],
