@@ -22,17 +22,17 @@ app.layout = html.Div([
     html.H4('Mean IUI Price by Donor Category and Ancestry Animated over Date'),
     html.P("Select an animation:"),
     dcc.RadioItems(
-        id='selection',
+        id="selection",
         options=["Price","Number"],
-        value='Price', inline=True
+        value="Price", inline=True
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
 ])
 
 
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
+
 def display_animated_graph(selection):
-    #data  # replace with your own data source
     animations = {
         'Price':
              px.bar(price,
