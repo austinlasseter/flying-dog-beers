@@ -30,7 +30,7 @@ app.layout = html.Div([
 
 @app.callback(Output("graph", "figure"), Input("dropdown", "value"))
 
-def update_graph(dropdown):
+def display_animated_graph(dropdown):
     animations = {
         "price":
                px.bar(price,
