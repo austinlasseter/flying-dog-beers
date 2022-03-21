@@ -1,6 +1,8 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
+import pandas as pd
 
+data = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
 app = Dash(__name__)
 
 app.layout = html.Div([
@@ -17,13 +19,8 @@ app.layout = html.Div([
 
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
 def display_animated_graph(selection):
-    df2  # replace with your own data source
+    data  # replace with your own data source
     animations = {
-        # 'GDP - Scatter': px.scatter(
-        #     df, x="gdpPercap", y="lifeExp", animation_frame="year",
-        #     animation_group="country", size="pop", color="continent",
-        #     hover_name="country", log_x=True, size_max=55,
-        #     range_x=[100,100000], range_y=[25,90]),
         'Population - Bar':
         px.bar(df2,
                x="Ancestry",
