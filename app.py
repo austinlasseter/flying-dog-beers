@@ -14,7 +14,7 @@ data = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plot
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
-
+selection = 'Population - Bar'
 app.layout = html.Div([
     html.H4('Animated Mean IUI Price by Donor Category and Ancestry'),
     html.P("Select an animation:"),
@@ -27,12 +27,12 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output("graph", "figure"), Input("selection", "value"))
+#@app.callback(Output("graph", "figure"), Input("selection", "value"))
 def display_animated_graph(selection):
     data  # replace with your own data source
     animations = {
         'Population - Bar':
-        px.bar(data,
+             px.bar(data,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
