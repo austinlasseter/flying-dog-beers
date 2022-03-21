@@ -24,7 +24,6 @@ app.layout = html.Div([
     dcc.RadioItems(
         id="selection",
         options=["Price","Number"],
-        value="Price", inline=True
         value="Price", 
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
@@ -32,9 +31,9 @@ app.layout = html.Div([
 
 
 
-@app.callback(Output("graph", "figure"), Input("dropdown", "value"))
+@app.callback(Output("graph", "figure"), Input("selection", "value"))
 
-def display_animated_graph(dropdown):
+def display_animated_graph(selection):
     animations = {
         "price":
              px.bar(price,
@@ -54,7 +53,7 @@ def display_animated_graph(dropdown):
                animation_group="Ancestry",
                barmode='group'),        
     }
-    return animations[dropdown]
+    return animations[selection]
 
 #display_animated_graph
 
