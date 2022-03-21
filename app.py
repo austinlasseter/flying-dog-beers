@@ -21,28 +21,29 @@ server = app.server
 app.layout = html.Div([
     html.H4('Mean IUI Price by Donor Category and Ancestry Animated over Date'),
     html.P("Select an animation:"),
-    dcc.RadioItems(
-        id="selection",
-        options=["Price","Number"],
-        value="Price", 
-    ),
+    dcc.Dropdown( id = 'dropdown',
+    options = [
+        {'Price':'price', 'value':'price' },
+        {'Number': 'number', 'value':'number'},
+        ],
+    value = 'Number'),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
 ])
 
 
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
 
-def display_animated_graph(selection):
+def display_animated_graph(dropdown):
     animations = {
-        "Price":
-               px.bar(number,
+        "price":
+               px.bar(price,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
                barmode='group'),
-         "Number":
+         "number":
                px.bar(number,
                x="Ancestry",
                y='Mean',
