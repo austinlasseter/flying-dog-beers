@@ -22,7 +22,7 @@ def display_animated_graph(selection):
     data  # replace with your own data source
     animations = {
         'Population - Bar':
-        px.bar(df2,
+        px.bar(data,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
