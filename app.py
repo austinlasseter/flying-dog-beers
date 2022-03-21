@@ -34,16 +34,16 @@ app.layout = html.Div([
 
 def display_animated_graph(selection):
     animations = {
-        'Price':
-             px.bar(price,
+        "Price":
+               px.bar(number,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
                barmode='group'),
-          'Number':
-             px.bar(number,
+         "Number":
+               px.bar(number,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
