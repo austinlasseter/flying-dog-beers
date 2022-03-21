@@ -27,9 +27,9 @@ app.layout = html.Div([
 ])
 
 
-#@app.callback(Output("graph", "figure"), Input("selection", "value"))
+@app.callback(Output("graph", "figure"), Input("selection", "value"))
 def display_animated_graph(selection):
-    data  # replace with your own data source
+    #data  # replace with your own data source
     animations = {
         'Population - Bar':
              px.bar(data,
