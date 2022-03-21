@@ -21,9 +21,9 @@ server = app.server
 app.layout = html.Div([
     html.H4('Mean IUI Price by Donor Category and Ancestry Animated over Date'),
     html.P("Select an animation:"),
-    dcc.Dropdown(['number','price'], 'price', id='dropdown'),
+    dcc.Dropdown(["price","number"], "price", id="dropdown"),
  #   html.Div(id='dd-output-container')
-    dcc.Loading(dcc.Graph(id="graph"), type="cube")
+    dcc.Loading(dcc.Graph(id="graph"), type="cube"),
 ])
 
 
