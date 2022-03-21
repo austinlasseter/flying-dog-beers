@@ -35,7 +35,7 @@ app.layout = html.Div([
 
 def display_animated_graph(selection):
     animations = {
-        "price":
+        "Price":
              px.bar(price,
                x="Ancestry",
                y='Mean',
