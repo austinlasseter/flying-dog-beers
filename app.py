@@ -10,7 +10,7 @@ import plotly.graph_objs as go
 
 
 
-data = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
+price = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
 number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df_IUI_number.csv')
 
 
@@ -23,8 +23,8 @@ app.layout = html.Div([
     html.P("Select an animation:"),
     dcc.RadioItems(
         id='selection',
-        options=["Yes","no"],
-        value='Yes',
+        options=["Price","Number"],
+        value='Price',
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
 ])
@@ -34,14 +34,22 @@ app.layout = html.Div([
 def display_animated_graph(selection):
     #data  # replace with your own data source
     animations = {
-        'Yes':
-             px.bar(data,
+        'Price':
+             px.bar(price,
                x="Ancestry",
                y='Mean',
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
                barmode='group'),
+          'Number':
+             px.bar(number,
+               x="Ancestry",
+               y='Mean',
+               color="Donor Category",
+               animation_frame="Date",
+               animation_group="Ancestry",
+               barmode='group'),        
     }
     return animations[selection]
 
