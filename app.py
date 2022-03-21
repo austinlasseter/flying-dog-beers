@@ -34,7 +34,7 @@ app.layout = html.Div([
 def display_animated_graph(selection):
     #data  # replace with your own data source
     animations = {
-        'Population - Bar':
+        'Yes':
              px.bar(selection,
                x="Ancestry",
                y='Mean',
