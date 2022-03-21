@@ -42,7 +42,7 @@ def display_animated_graph(selection):
     }
     return animations[selection]
 
-
+display_animated_graph
 
 
 if __name__ == '__main__':
