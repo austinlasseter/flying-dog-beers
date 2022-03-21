@@ -49,7 +49,7 @@ def update_graph(dropdown):
                animation_group="Ancestry",
                barmode='group'),        
     }
-    return animations[selection]
+    return animations[dropdown]
 
 #display_animated_graph
 
