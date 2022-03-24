@@ -1,12 +1,9 @@
-#from dash import Input, Output
-import plotly.express as px
 import pandas as pd
-
 import dash
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, dcc, html, Input, Output
+import plotly.express as px
 import plotly.graph_objs as go
+
 
 
 
@@ -14,26 +11,25 @@ price = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plo
 number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/Group_means.csv')
 
 
-#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__)
-server = app.server
-#selection = 'Population - Bar'
+
+
+app = Dash(__name__)
+
 app.layout = html.Div([
-    html.H4('Mean IUI Data by Donor Category and Ancestry Animated over Date'),
-    html.P("Select a Variable:"),
+    html.H4('Animated Mean IUI Price by Donor Category and Ancestry'),
+    html.P("Select an animation:"),
     dcc.RadioItems(
-        id="selection",
+        id='selection',
         options=["Price","IUI Number", "IUI ART Number", "ICI Number","ICI ART Number"],
-        value="Price", 
+        value="Price",
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
 ])
 
 
-
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
-
 def display_animated_graph(selection):
+    #data  # replace with your own data source
     animations = {
         "Price":
              px.bar(price,
@@ -42,21 +38,50 @@ def display_animated_graph(selection):
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
-               barmode='group'),
-
-          'Number':
+               barmode='group', range_y=[0,1500]),
+        
+        "IUI Number":
              px.bar(number,
                x="Ancestry",
-               y= selection,
+               y= 'IUI Number',
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
-               barmode='group'),        
+               barmode='group'),  
+        
+        "IUI ART Number":
+             px.bar(number,
+               x="Ancestry",
+               y= 'IUI ART Number',
+               color="Donor Category",
+               animation_frame="Date",
+               animation_group="Ancestry",
+               barmode='group'), 
+        
+        "ICI Number":
+             px.bar(number,
+               x="Ancestry",
+               y= 'ICI Number',
+               color="Donor Category",
+               animation_frame="Date",
+               animation_group="Ancestry",
+               barmode='group'), 
+        
+        "ICI ART Number":
+             px.bar(number,
+               x="Ancestry",
+               y= 'ICI ART Number',
+               color="Donor Category",
+               animation_frame="Date",
+               animation_group="Ancestry",
+               barmode='group')         
+        
     }
     return animations[selection]
 
-#display_animated_graph
+
 
 
 if __name__ == '__main__':
-    app.run_server()
+    #print('yes')
+    app.run_server(debug=False)
