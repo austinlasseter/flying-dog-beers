@@ -14,7 +14,7 @@ number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-pl
 
 
 app = Dash(__name__)
-
+server = app.server
 app.layout = html.Div([
     html.H4('Animated Mean IUI Price by Donor Category and Ancestry'),
     html.P("Select an animation:"),
