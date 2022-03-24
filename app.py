@@ -11,7 +11,7 @@ import plotly.graph_objs as go
 
 
 price = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
-number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df_IUI_number.csv')
+number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/Group_means.csv')
 
 
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -23,7 +23,7 @@ app.layout = html.Div([
     html.P("Select a Variable:"),
     dcc.RadioItems(
         id="selection",
-        options=["Price","Number"],
+        options=["Price","IUI Number", ,"IUI ART Number", "ICI Number","ICI ART Number"],
         value="Price", 
     ),
     dcc.Loading(dcc.Graph(id="graph"), type="cube")
@@ -47,7 +47,7 @@ def display_animated_graph(selection):
           'Number':
              px.bar(number,
                x="Ancestry",
-               y='Mean',
+               y= selection,
                color="Donor Category",
                animation_frame="Date",
                animation_group="Ancestry",
