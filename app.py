@@ -83,5 +83,4 @@ def display_animated_graph(selection):
 
 
 if __name__ == '__main__':
-    #print('yes')
-    app.run_server(debug=False)
+    app.run_server()
