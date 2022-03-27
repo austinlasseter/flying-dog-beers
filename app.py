@@ -16,7 +16,9 @@ number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-pl
 app = Dash(__name__)
 server = app.server
 app.layout = html.Div([
+    #heading
     html.H4('Animated Means by Donor Category and Ancestry over Date'),
+    #heading for radio items
     html.P("Select an animation:"),
     dcc.RadioItems(
         id='selection',
@@ -29,7 +31,6 @@ app.layout = html.Div([
 
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
 def display_animated_graph(selection):
-    #data  # replace with your own data source
     animations = {
         "Price":
              px.bar(price,
