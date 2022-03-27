@@ -5,12 +5,8 @@ import plotly.express as px
 import plotly.graph_objs as go
 
 
-
-
 price = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/df2.csv')
 number = pd.read_csv('https://raw.githubusercontent.com/prubinstreit/animated-plotly/master/Group_means.csv')
-
-
 
 
 app = Dash(__name__)
@@ -20,16 +16,17 @@ app.layout = html.Div([
     html.H4('Animated Means by Donor Category and Ancestry over Date'),
     #heading for radio items
     html.P("Select an animation:"),
-    dcc.RadioItems(
+    dcc.Dropdown(
         id='selection',
         options=["Price","IUI Number", "IUI ART Number", "ICI Number","ICI ART Number"],
         value="IUI Number",
     ),
-    dcc.Loading(dcc.Graph(id="graph"), type="cube")
+    dcc.Loading(dcc.Graph(id="graph"), type="graph")
 ])
 
-
+#triggers the function below by passing "selection"
 @app.callback(Output("graph", "figure"), Input("selection", "value"))
+
 def display_animated_graph(selection):
     animations = {
         "Price":
