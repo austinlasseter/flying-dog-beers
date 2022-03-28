@@ -13,7 +13,7 @@ app = Dash(__name__)
 server = app.server
 app.layout = html.Div([
     #heading
-    html.H4('Animated Means by Donor Category and Ancestry over Date'),
+    html.H4('Average Vial Availability by Donor Category and Ancestry over Date'),
     #heading for radio items
     html.P("Select an animation:"),
     dcc.Dropdown(
